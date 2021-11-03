@@ -15,7 +15,7 @@ public class Beating : MonoBehaviour
     void Start()
     {
         timer = 0;
-        rate = 1;
+        rate = 0.5f;
     }
 
     // Update is called once per frame

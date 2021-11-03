@@ -9,7 +9,7 @@ public class Oscillator : MonoBehaviour
     Vector3 velY = new Vector3(0, 0, 0);
     [SerializeField]
     [Tooltip("speed")]
-    float speed = 1;
+    float speed = 0.5f;
     
     [SerializeField]
     [Tooltip("border")]
@@ -29,6 +29,7 @@ public class Oscillator : MonoBehaviour
         Transform t = GetComponent<Transform>();
         t.position= Position;
         timer = 0;
+        speed = 2;
     }
 
     // Update is called once per frame
@@ -37,15 +38,7 @@ public class Oscillator : MonoBehaviour
         Transform t = GetComponent<Transform>();
         timer += Time.deltaTime;
         curVel.x = oscillated(timer, speed, Border);
-        t.position = (Position+curVel); // startpos.x+[-10....10] = [10*cos(time*speed/3.14)
-        /*if (t.position.x <= -Border)
-        {
-            curVel = curVel*(-1);
-        }
-        if (t.position.x >= Border)
-        {
-            curVel = curVel*(-1);d
-        }*/
+        t.position = (Position+curVel); // startpos.x+[-10....10] = [10*cos(time*speed)
     }
 
     float oscillated(float time, float speed, float scale)
